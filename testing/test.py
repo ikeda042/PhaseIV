@@ -13,6 +13,8 @@ def get_contour(image_path: str) -> np.ndarray:
     )
     # # Filter out contours with small area
     contours = list(filter(lambda x: cv2.contourArea(x) >= 300, contours_raw))
+    # print image size
+    print(image.shape)
     return contours
 
 
@@ -22,6 +24,8 @@ def plot_contour(contour: np.ndarray):
         plt.scatter(contour[i][:, 0, 0], contour[i][:, 0, 1], s=1)
     plt.gca().set_aspect("equal")
     plt.tick_params(axis="both", which="both", direction="in")
+    plt.xlim(0, 1226)
+    plt.ylim(0, 1006)
     plt.savefig("testing/contour.png", dpi=300)
     plt.close()
 
@@ -30,4 +34,3 @@ def plot_contour(contour: np.ndarray):
 image_path = "testing/test.png"
 contour = get_contour(image_path)
 plot_contour(contour)
-print(contour)
