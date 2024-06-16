@@ -13,8 +13,6 @@ def get_contour(image_path: str) -> np.ndarray:
     )
     # # Filter out contours with small area
     contours = list(filter(lambda x: cv2.contourArea(x) >= 300, contours_raw))
-    # print image size
-    print(image.shape)
     return contours
 
 
