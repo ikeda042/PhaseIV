@@ -21,7 +21,8 @@ def get_contour(image_path: str) -> np.ndarray:
 def plot_contour(contour: np.ndarray):
     plt.figure()
     for i in range(len(contour)):
-        plt.scatter(contour[i][:, 0, 0], contour[i][:, 0, 1], s=1)
+        contour_i = contour[i].reshape(-1, 2).T
+        plt.plot(contour_i[0], contour_i[1], linewidth=0.5)
     plt.gca().set_aspect("equal")
     plt.tick_params(axis="both", which="both", direction="in")
     plt.xlim(0, 1226)
