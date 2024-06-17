@@ -74,3 +74,7 @@ for canny_param_int, contours, contour_sum in tqdm(
     global_contour_sums.append(contour_sum)
     plot_contour(contours, f"tmp/contour_{canny_param_int}.png", canny_param_int)
     plot_contour_sum(global_contour_sums, canny_param_int)
+
+
+images = [imageio.imread(f"testing/combined_{i}.png") for i in tqdm(range(1, 254))]
+imageio.mimsave("result.gif", images, loop=0)
