@@ -60,7 +60,7 @@ def plot_contour_sum(global_contour_sums, i):
 
 
 ############################################################################################################
-image_path = "testing/test2.png"
+image_path = "sample_images/cells_100x_large_scope.png"
 ############################################################################################################
 try:
     os.mkdir("tmp")
@@ -76,6 +76,12 @@ for canny_param_int, contours, contour_sum in tqdm(
     plot_contour(contours, f"tmp/contour_{canny_param_int}.png", canny_param_int)
     plot_contour_sum(global_contour_sums, canny_param_int)
 
+for i in range(1, 254):
+    img1 = cv2.imread(f"tmp/contour_{i}.png")
+    img2 = cv2.imread(f"tmp/contour_sum_{i}.png")
+    combined = np.concatenate([img1, img2], axis=1)
+    cv2.imwrite(f"tmp/combined_{i}.png", combined)
 
-images = [imageio.imread(f"testing/combined_{i}.png") for i in tqdm(range(1, 254))]
+
+images = [imageio.imread(f"tmp/combined_{i}.png") for i in tqdm(range(1, 254))]
 imageio.mimsave("result.gif", images, loop=0)
