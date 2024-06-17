@@ -56,6 +56,7 @@ def plot_contour_sum(global_contour_sums, i):
     plt.ylim(0, 160000)
     plt.savefig(f"tmp/contour_sum_{i}.png", dpi=300)
     plt.close()
+    plt.clf()
 
 
 ############################################################################################################
