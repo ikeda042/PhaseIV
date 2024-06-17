@@ -48,12 +48,12 @@ def process_image(image, canny_param_int: CannyParamInt):
 
 def plot_contour_sum(global_contour_sums, i):
     plt.figure()
-    plt.plot(range(1, i + 1), global_contour_sums[:i], marker="o")
+    plt.plot(range(1, i + 1), global_contour_sums[:i], marker="o", markersize=1)
     plt.xlabel("Canny Threshold")
     plt.ylabel("Area")
-    plt.xlim(0, 254)
+    plt.xlim(-1, 254)
     # meta params
-    plt.ylim(0, 160000)
+    plt.ylim(-10, 16000)
     plt.savefig(f"tmp/contour_sum_{i}.png", dpi=300)
     plt.close()
     plt.clf()
@@ -67,6 +67,7 @@ try:
     os.mkdir("tmp")
 except FileExistsError:
     shutil.rmtree("tmp")
+
 image = cv2.imread(image_path)
 global_contour_sums = []
 for canny_param_int, contours, contour_sum in tqdm(
