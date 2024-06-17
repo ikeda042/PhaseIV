@@ -1,5 +1,0 @@
-*
-!.gitignore
-*.pyc
-!test.py
-!test.png
