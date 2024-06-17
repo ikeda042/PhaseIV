@@ -6,6 +6,7 @@ from pydantic.fields import Field
 import imageio
 
 CannyParamInt = Annotated[int, Field(gt=1, lt=254)]
+global_contour_sums = []
 
 
 def get_contour(image_path: str, canny_param_int: CannyParamInt) -> np.ndarray:
@@ -38,23 +39,29 @@ def plot_contour(contour: np.ndarray, save_path: str):
     plt.savefig(save_path, dpi=300)
     plt.close()
     plt.clf()
-
-    plt.figure()
-    # get the sum of all contours
-    contour_sum = np.zeros((2, 0))
-    for i in range(len(contour)):
-        contour_i = contour[i].reshape(-1, 2).T
-        contour_sum = np.concatenate([contour_sum, contour_i], axis=1)
-    print(contour_sum.shape)
+    # contour area sum
+    global_contour_sums.append(sum([cv2.contourArea(c) for c in contour]))
 
 
 image_path = "testing/test2.png"
 for i in range(1, 254):
     contour = get_contour(image_path, canny_param_int=i)
     plot_contour(contour, f"testing/contour_{i}.png")
-
+for i in range(1, 254):
+    fig = plt.figure()
+    print(range(i), global_contour_sums[:i])
+    plt.plot(range(i), global_contour_sums[:i], marker="o")
+    plt.xlabel("Canny Threshold")
+    plt.ylabel("Area")
+    plt.xlim(0, 254)
+    plt.savefig(f"testing/contour_sum_{i}.png", dpi=300)
 
 images = []
 for i in range(1, 254):
     images.append(imageio.imread(f"testing/contour_{i}.png"))
 imageio.mimsave("testing/contour.gif", images, loop=0)
+
+images = []
+for i in range(1, 254):
+    images.append(imageio.imread(f"testing/contour_sum_{i}.png"))
+imageio.mimsave("testing/contour_sum.gif", images, loop=0)
