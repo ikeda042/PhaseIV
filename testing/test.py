@@ -38,6 +38,14 @@ def plot_contour(contour: np.ndarray, save_path: str):
     plt.close()
     plt.clf()
 
+    plt.figure()
+    # get the sum of all contours
+    contour_sum = np.zeros((2, 0))
+    for i in range(len(contour)):
+        contour_i = contour[i].reshape(-1, 2).T
+        contour_sum = np.concatenate([contour_sum, contour_i], axis=1)
+    print(contour_sum.shape)
+
 
 image_path = "testing/test2.png"
 for i in range(1, 254):
