@@ -1,9 +1,13 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+from typing import Annotated
+from pydantic.fields import Field
+
+CannyParamInt = Annotated[int, Field(gt=1, lt=254)]
 
 
-def get_contour(image_path: str) -> np.ndarray:
+def get_contour(image_path: str, canny_param_int: CannyParamInt) -> np.ndarray:
     image = cv2.imread(image_path)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     ret, thresh = cv2.threshold(gray, 130, 255, cv2.THRESH_BINARY)
