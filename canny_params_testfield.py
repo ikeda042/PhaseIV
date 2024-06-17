@@ -35,3 +35,9 @@ def plot_contour(contour: np.ndarray, save_path: str, number: int):
     plt.savefig(save_path, dpi=300)
     plt.close()
     plt.clf()
+
+
+def process_image(image, canny_param_int: CannyParamInt):
+    contours = get_contour(image, canny_param_int)
+    contour_sum = sum([cv2.contourArea(c) for c in contours])
+    return canny_param_int, contours, contour_sum
