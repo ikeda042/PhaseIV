@@ -74,6 +74,7 @@ npe2==0.7.5
 numba==0.60.0
 numpy==1.26.4
 numpydoc==1.7.0
+opencv-python==4.10.0.82
 opt-einsum==3.3.0
 optree==0.11.0
 packaging==24.1
