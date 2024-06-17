@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from typing import Annotated
 from pydantic.fields import Field
+import imageio
 
 CannyParamInt = Annotated[int, Field(gt=1, lt=254)]
 
@@ -52,7 +53,6 @@ for i in range(1, 254):
     contour = get_contour(image_path, canny_param_int=i)
     plot_contour(contour, f"testing/contour_{i}.png")
 
-import imageio
 
 images = []
 for i in range(1, 254):
