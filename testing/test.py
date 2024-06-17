@@ -20,7 +20,7 @@ def get_contour(image_path: str, canny_param_int: CannyParamInt) -> np.ndarray:
     return contours
 
 
-def plot_contour(contour: np.ndarray, save_num: int):
+def plot_contour(contour: np.ndarray, save_path: str):
     plt.figure()
     for i in range(len(contour)):
         contour_i = contour[i].reshape(-1, 2).T
@@ -29,12 +29,24 @@ def plot_contour(contour: np.ndarray, save_num: int):
     plt.tick_params(axis="both", which="both", direction="in")
     plt.xlim(0, 1226)
     plt.ylim(0, 1006)
-    plt.savefig(f"testing/contour_{save_num}.png", dpi=300)
+    number = save_path.split("_")[-1].split(".")[0]
+    # put number on the upper right corner
+    plt.text(
+        0.95, 0.95, number, ha="center", va="center", transform=plt.gca().transAxes
+    )
+    plt.savefig(save_path, dpi=300)
     plt.close()
+    plt.clf()
 
 
-# test.png
-image_path = "testing/test.png"
+image_path = "testing/test2.png"
 for i in range(1, 254):
     contour = get_contour(image_path, canny_param_int=i)
-    plot_contour(contour)
+    plot_contour(contour, f"testing/contour_{i}.png")
+
+import imageio
+
+images = []
+for i in range(1, 254):
+    images.append(imageio.imread(f"testing/contour_{i}.png"))
+imageio.mimsave("testing/contour.gif", images, loop=0)
