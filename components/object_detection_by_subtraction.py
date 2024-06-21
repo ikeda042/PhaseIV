@@ -1,9 +1,11 @@
 import cv2
 import os
+import imageio
 
 fgbg = cv2.createBackgroundSubtractorMOG2()
 
 num_images = len(os.listdir("sample_images/sample_tiff"))
+frames = []
 
 for i in range(num_images):
     frame = cv2.imread(f"sample_images/sample_tiff/{i}.tif")
@@ -32,9 +34,9 @@ for i in range(num_images):
 
     combined = cv2.hconcat([frame, cv2.cvtColor(fgmask, cv2.COLOR_GRAY2BGR)])
 
-    cv2.imshow("Combined", combined)
+    combined_rgb = cv2.cvtColor(combined, cv2.COLOR_BGR2RGB)
 
-    if cv2.waitKey(int(1)) & 0xFF == 27:
-        break
+    frames.append(combined_rgb)
 
-cv2.destroyAllWindows()
+
+imageio.mimsave("timelapse_sub.gif", frames)
