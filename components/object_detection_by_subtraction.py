@@ -22,7 +22,7 @@ for i in range(num_images):
     contours, _ = cv2.findContours(fgmask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     for contour in contours:
-        if cv2.contourArea(contour) > 30:
+        if cv2.contourArea(contour) > 1:
             x, y, w, h = cv2.boundingRect(contour)
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
 
