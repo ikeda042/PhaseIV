@@ -50,7 +50,6 @@ def extract_nd2(file_name: str):
 
     images = pims.open(file_name)
 
-    # Display available axes and sizes
     print(f"Available axes: {images.sizes.keys()}")
     print(f"Sizes: {images.sizes}")
 
