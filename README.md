@@ -16,7 +16,7 @@
 
 ![](docs_images/param_serach.gif)
 
-## Timelapse analysis component (WIP)
+## Cell division annotator (WIP)
 
 [object_detection_by_subtraction.py](components/object_detection_by_subtraction.py)
 
