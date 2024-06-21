@@ -15,3 +15,11 @@
 **Total area fluctuation by param1 of the cv2.canny() method.**
 
 ![](docs_images/param_serach.gif)
+
+## Timelapse analysis component (WIP)
+
+[object_detection_by_subtraction.py](components/object_detection_by_subtraction.py)
+
+* Detects dividing cells in a timelapse video. 
+
+![](docs_images/timelapse_sub.gif)
