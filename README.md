@@ -6,6 +6,7 @@
 
 * Finds the best parameter for canny edge detection for microscopic images.
 
+[](search_canny_param_component.py)
 
 **Raw image**
 
