@@ -11,6 +11,6 @@
 
 ![](sample_images/cells_100x_large_scope.png)
 
-**Area fluctuation by param1 of the cv2.canny() method.**
+**Total area fluctuation by param1 of the cv2.canny() method.**
 
 ![](docs_images/param_serach.gif)
