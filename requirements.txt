@@ -83,6 +83,7 @@ parso==0.8.4
 partd==1.4.2
 pexpect==4.9.0
 pillow==10.3.0
+PIMS==0.7
 Pint==0.24
 platformdirs==4.2.2
 pooch==1.8.2
@@ -115,10 +116,10 @@ rich==13.7.1
 rpds-py==0.18.1
 scikit-image==0.23.2
 scipy==1.13.1
-seaborn==0.13.2
 setuptools==70.0.0
 shellingham==1.5.4
 six==1.16.0
+slicerator==1.1.0
 snowballstemmer==2.2.0
 Sphinx==7.3.7
 sphinxcontrib-applehelp==1.0.8
