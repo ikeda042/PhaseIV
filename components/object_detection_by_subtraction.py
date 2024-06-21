@@ -39,4 +39,4 @@ for i in range(num_images):
     frames.append(combined_rgb)
 
 
-imageio.mimsave("timelapse_sub.gif", frames)
+imageio.mimsave("timelapse_sub.gif", frames, duration=0.1, loop=0)
